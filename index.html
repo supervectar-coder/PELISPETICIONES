@@ -1,199 +1,266 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <title>SUPERVECTAR PELIS PETICIONES</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Launcher SUPERVECTAR TV - Deportes, TV, Películas y Series">
 
 <style>
-:root {
-    --bg: #ffffff; /* ⚪ FONDO BLANCO */
-    --primary: #0a3d62;
-    --text: #111111; /* 🔤 TEXTO OSCURO */
-    --btn: #f1f1f1; /* BOTONES CLAROS */
-    --btn-hover: #e0e0e0;
-    --btn-text: #ff3b3b; /* 🔴 ROJO */
-    --glow: rgba(255, 0, 0, 0.5);
+:root{
+  --bg:#ffffff;
+  --card:#f5f5f5;
+  --muted:#666;
+  --highlight:#ff0000;
+  --font-size:16px;
 }
 
-* { box-sizing: border-box; }
-
-html, body {
-    height: 100%;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: var(--bg);
-    color: var(--text);
-    font-family: Arial, sans-serif;
+body{
+  font-family:Inter,system-ui;
+  background:linear-gradient(180deg,#ffffff 0%,#f2f2f2 100%);
+  color:#111;
+  margin:0;
+  padding:16px;
+  font-size: var(--font-size);
+  overflow-x:hidden;
 }
 
-.app-container {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    height: 95vh;
-    width: 95vw;
+header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-bottom:16px;
 }
 
-/* LOGO */
-.logo {
-    width: 80px;
-    height: 80px;
-    border-radius: 20px;
-    margin: 10px auto 5px;
-    display: block;
-    box-shadow: 0 0 15px var(--glow);
-    animation: logoGlow 2s ease-in-out infinite alternate;
+h1{
+  font-size:20px;
+  margin:0;
+  color:var(--highlight);
+  font-weight:900;
+  text-shadow:0 0 6px rgba(255,0,0,0.3);
 }
 
-@keyframes logoGlow {
-    from { box-shadow: 0 0 10px var(--glow); }
-    to { box-shadow: 0 0 25px var(--glow); }
+input[type=search], select{
+  padding:12px 16px;
+  border-radius:10px;
+  border:1px solid rgba(0,0,0,0.2);
+  background:var(--highlight);
+  color:#fff;
+  font-weight:bold;
+  font-size:16px;
 }
 
-h1 {
-    margin-top: 10px;
-    font-size: 28px;
-    font-weight: bold;
-    color: var(--btn-text);
-    text-shadow: 0 0 12px var(--glow);
-    animation: neonTitle 2s ease-in-out infinite alternate;
+/* ✅ PLACEHOLDER EN BLANCO */
+input[type=search]::placeholder{
+  color:#fff;
+  opacity:1;
 }
 
-@keyframes neonTitle {
-    from { text-shadow: 0 0 12px var(--glow); }
-    to { text-shadow: 0 0 25px var(--glow), 0 0 40px var(--glow); }
+h2{
+  margin-top:24px;
+  color:var(--highlight);
 }
 
-.icon-grid {
-    flex: 1;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 18px;
-    padding: 20px;
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+  gap:12px;
+  scroll-behavior:smooth;
+  overflow-x:auto;
 }
 
-.app-btn {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 25px;
-    border-radius: 25px;
-    font-size: 18px;
-    color: var(--btn-text);
-    background: var(--btn);
-    font-weight: bold;
-    text-decoration: none;
-    transition: .25s;
-    box-shadow: 0 0 10px #ccc;
-    border: 1px solid #ddd;
+.card{
+  cursor:pointer;
+  border-radius:8px;
+  overflow:hidden;
+  outline:none;
+  transition: transform 0.2s, box-shadow 0.2s;
+  background:var(--card);
 }
 
-.app-btn:hover, .app-btn:focus {
-    background: var(--btn-hover);
-    box-shadow: 0 0 12px var(--glow), 0 0 25px var(--glow);
-    outline: none;
-    transform: scale(1.05);
+.card:hover, .card:focus{
+  transform: scale(1.05);
+  box-shadow:0 8px 20px rgba(255,0,0,0.4);
 }
 
-.app-btn:active {
-    transform: scale(.92);
+.card .img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+  border-radius:8px;
 }
 
-.icon {
-    width: 48px;
-    height: 48px;
-    margin-bottom: 12px;
-    border-radius: 12px;
+.card .title{
+  font-weight:700;
+  font-size:14px;
+  margin-top:4px;
 }
 
-:focus-visible {
-    outline: 3px solid red;
-    border-radius: 30px;
+.card .meta{
+  color:var(--muted);
+  font-size:12px;
+  margin-top:2px;
 }
 
-/* 📱 Móvil */
-.mobile-ui .app-btn {
-    padding: 20px;
-    font-size: 16px;
+.pagination{
+  display:flex;
+  justify-content:center;
+  gap:6px;
+  margin-top:12px;
 }
 
-/* 🖥️ PC */
-.pc-ui .app-btn {
-    padding: 40px;
-    font-size: 22px;
+.pagination button{
+  padding:10px 14px;
+  border-radius:6px;
+  border:1px solid #111;
+  background:transparent;
+  color:#111;
+  cursor:pointer;
+  font-size:14px;
 }
 
-/* 📺 TV */
-.tv-ui .app-btn {
-    padding: 35px;
-    font-size: 24px;
+.pagination button.active{
+  background:var(--highlight);
+  color:#fff;
+}
+
+.pagination button:hover, .pagination button:focus{
+  background:var(--highlight);
+  color:#fff;
+  outline:none;
+}
+
+.grid::-webkit-scrollbar{
+  display:none;
 }
 </style>
 </head>
 
 <body>
-<div class="app-container">
 
-<img src="https://i.ibb.co/mFVJhbqV/cinee.jpg" alt="Logo SUPERVECTAR" class="logo">
+<header>
+  <div style="display:flex;align-items:center;gap:10px;">
+    <img src="https://i.ibb.co/7dGjZb80/6.jpg" style="height:42px;width:42px;border-radius:50%;object-fit:cover;">
+    <div><h1>SUPERVECTAR PELIS (PETICIONES)</h1></div>
+  </div>
 
-<h1>SUPERVECTAR PELIS PETICIONES</h1>
+  <div class="controls" style="display:flex;gap:8px;flex-wrap:wrap;">
+    <input id="search" type="search" placeholder="Buscar...">
 
-<div id="notice">
-  ⚠️ Para acceder a algunas webs necesitas estar conectado a un servidor VPN:
-  <a href="https://one.one.one.one/es-ES/" target="_blank">Descargar aqui VPN WARP 1.1.1.1</a> 
+    <select id="genre-filter">
+      <option value="all">Género</option>  
+      <option value="Acción">Acción</option>	  
+      <option value="Comedia española">Comedia española</option>
+      <option value="Comedia">Comedia</option>
+      <option value="Drama">Drama</option>
+      <option value="Sci-Fi">Sci-Fi</option>
+      <option value="Thriller">Thriller</option>	  
+      <option value="Terror">Terror</option>
+      <option value="Retro">Retro</option>
+      <option value="Animacion">Animacion</option>	  
+    </select>
 
-</div>
-<div class="icon-grid">
+    <select id="filterYear" style="width:100px">
+      <option value="">Año</option>
+    </select>
+  </div>
+</header>
 
-<a class="app-btn" href="https://filedn.com/ldXVm4wO7JdkpAf1xjDEu6B/ESPA%C3%91OL/00.%20LATINO/Torrente%20Presidente%20(2026)%20TS%20SCREENER.mp4">
-<img class="icon" src="https://i.ibb.co/qMM223Nz/TORRENTEP.jpg"> TORRENTE PRESIDENTE (ESPAÑOLA)
-</a>
-
-<a class="app-btn" href="https://filedn.com/ldXVm4wO7JdkpAf1xjDEu6B/ESPA%C3%91OL/00.%20LATINO/Mortal%20Kombat%20II%20(2026)%20TS%20SCREENER.mp4">
-<img class="icon" src="https://i.ibb.co/LdpwVz61/MORTAL-KOMBAT-2-CAST.jpg"> MORTAL KOMBAT 2 (ACCION)
-</a>
-
-<a class="app-btn" href="https://filedn.com/ldXVm4wO7JdkpAf1xjDEu6B/ESPA%C3%91OL/00.%20LATINO/Shelter%20El%20protector%20(2026)%20DVD%20S.mp4">
-<img class="icon" src="https://i.ibb.co/Fq59fyZv/SHELTER-EL-PROTECTOR.jpg"> SHELTER: EL PROTECTOR (ACCION)
-</a>
-
-<a class="app-btn" href="https://filedn.com/ldXVm4wO7JdkpAf1xjDEu6B/ESPA%C3%91OL/00.%20LATINO/Whistle%20El%20silbido%20del%20mal%20(2026)%20DVD%20S.mp4">
-<img class="icon" src="https://i.ibb.co/h1wCy2kq/Whistle-El-silbido-del-mal-2026.jpg"> WHISTLE: EL SILBIDO DEL MAL (TERROR)
-</a>
-
-<a class="app-btn" href="https://ok.ru/video/18749700639232">
-<img class="icon" src="https://i.ibb.co/QvGQWxyq/aida-y-vuelta-623102843-mmed.jpg"> AIDA Y VUELTA (ESPAÑOLA)
-</a>
-
-<a class="app-btn" href="https://ok.ru/video/15420322875904">
-<img class="icon" src="https://i.ibb.co/ds08FhXt/aida-y-vuelta.jpg"> AIDA Y VUELTA, CAPITULO REGALO (ESPAÑOLA)
-</a>
-
-<a class="app-btn" href="https://filedn.com/ldXVm4wO7JdkpAf1xjDEu6B/ESPA%C3%91OL/00.%20LATINO/Toy%20Story%205%20(2026)%20LATINO%20TS.mp4">
-<img class="icon" src="https://i.ibb.co/B52z2j0S/TOYSTORY5.jpg"> TOY STORY 5 (LATINO)
-</a>
-
-</div>
-</div>
+<main>
+  <h2>Películas</h2>
+  <div id="movies-grid" class="grid"></div>
+  <div id="movies-pagination" class="pagination"></div>
+</main>
 
 <script>
-function detectDevice() {
-    const ua = navigator.userAgent.toLowerCase();
+const mediaData = [
+  { id:'torrentepresi', title:'Torrente presidente', year:2026, genre:'Comedia española', poster:'https://filedn.com/lTs3E9lEzCxftG4kMyikVWJ/000PORTADAS/torrente%20presidente.jpg', link:'https://filedn.com/ldXVm4wO7JdkpAf1xjDEu6B/ESPA%C3%91OL/00.%20LATINO/Torrente%20Presidente%20(2026)%20TS%20SCREENER.mp4'},      
+  { id:'Lmortalk22', title:'Mortal kombat 2', year:2026, genre:'Acción', poster:'https://filedn.com/lTs3E9lEzCxftG4kMyikVWJ/000PORTADAS/MORTAL%20KOMBAT%202%20CAST.jpg', link:'https://filedn.com/ldXVm4wO7JdkpAf1xjDEu6B/ESPA%C3%91OL/00.%20LATINO/Mortal%20Kombat%20II%20(2026)%20TS%20SCREENER.mp4'},    
+  { id:'whistle', title:'Whistle el sibido del mal', year:2026, genre:'Terror', poster:'https://filedn.com/lTs3E9lEzCxftG4kMyikVWJ/000PORTADAS/Whistle%20El%20silbido%20del%20mal%20(2026).jpg', link:'https://filedn.com/ldXVm4wO7JdkpAf1xjDEu6B/ESPA%C3%91OL/00.%20LATINO/Whistle%20El%20silbido%20del%20mal%20(2026)%20DVD%20S.mp4'},  
+  { id:'scream7', title:'Scream 7', year:2026, genre:'Terror', poster:'https://es.web.img3.acsta.net/r_1920_1080/img/f9/57/f957e82b8374af3029d4e7acc0b62229.png', link:'https://filedn.com/ldXVm4wO7JdkpAf1xjDEu6B/ESPA%C3%91OL/S/Scream%207%20(HD)%202026.mp4'},  
+  { id:'aidayvuelta', title:'Aida y vuelta', year:2026, genre:'Comedia española', poster:'https://filedn.com/lTs3E9lEzCxftG4kMyikVWJ/000PORTADAS/A%C3%ADda%20y%20vuelta.jpg', link:'https://ok.ru/video/18749700639232'},  
+  { id:'aidayvueltacr', title:'Aida y vuelta capitulo regalo', year:2026, genre:'Comedia española', poster:'https://filedn.com/lTs3E9lEzCxftG4kMyikVWJ/000PORTADAS/A%C3%ADda%20y%20vuelta.jpg', link:'https://ok.ru/video/15420322875904'},  
+  { id:'lqsa200', title:'La que se avecina 200', year:2025, genre:'Comedia española', poster:'https://media.vandalsports.com/i/620x882/10-2025/20251024153556_1.jpg', link:'https://ok.ru/video/19056820161024'},  
+  { id:'pajaresesteso', title:'Pajares y esteso (saga)', year:1978, genre:'Retro', poster:'https://www.themoviedb.org/t/p/w1280/iDZHaEZacxIlcng9sRfiDd6uS0d.jpg', link:'https://supervectar-coder.github.io/VERPAJARESESTESO/'},      
+  { id:'toystory5', title:'Toy story 5 (latino)', year:2026, genre:'Animacion', poster:'https://es.web.img3.acsta.net/r_1920_1080/img/c3/69/c36953a21b00e23cd2363c34defc8a70.png', link:'https://filedn.com/ldXVm4wO7JdkpAf1xjDEu6B/ESPA%C3%91OL/00.%20LATINO/Toy%20Story%205%20(2026)%20LATINO%20TS.mp4'},      
 
-    if (/tv|smart|tizen|webos|android tv/.test(ua)) {
-        document.body.classList.add("tv-ui");
-    } else if (/mobile|android|iphone/.test(ua)) {
-        document.body.classList.add("mobile-ui");
-    } else {
-        document.body.classList.add("pc-ui");
-    }
+];
+
+let itemsPerPage = 200; 
+let moviePage = 1;
+let filteredData = mediaData;
+let movieFocus = 0;
+
+const searchEl = document.getElementById('search');
+const genreEl = document.getElementById('genre-filter');
+const yearEl = document.getElementById('filterYear');
+const moviesEl = document.getElementById('movies-grid');
+const moviesPagEl = document.getElementById('movies-pagination');
+
+[...new Set(mediaData.map(i=>i.year))].sort((a,b)=>b-a).forEach(y=>{
+  const o=document.createElement('option');
+  o.value=y;
+  o.textContent=y;
+  yearEl.appendChild(o);
+});
+
+function renderMovies(data){
+  const movies = data;
+  const totalPages = Math.ceil(movies.length/itemsPerPage) || 1;
+  if(moviePage>totalPages) moviePage=totalPages;
+
+  const start = (moviePage-1)*itemsPerPage;
+  const end = start + itemsPerPage;
+
+  moviesEl.innerHTML='';
+  movies.slice(start,end).forEach((item)=>{
+    const div=document.createElement('div');
+    div.className='card';
+    div.tabIndex=0;
+    div.innerHTML=`
+      <img class="img" src="${item.poster}">
+      <div class="info">
+        <div class="title">${item.title}</div>
+        <div class="meta">${item.year} • ${item.genre}</div>
+      </div>`;
+    div.onclick=()=>window.open(item.link,'_blank');
+    moviesEl.appendChild(div);
+  });
+
+  moviesPagEl.innerHTML='';
+  for(let i=1;i<=totalPages;i++){
+    const btn=document.createElement('button');
+    btn.textContent=i;
+    if(i===moviePage) btn.classList.add('active');
+    btn.onclick=()=>{
+      moviePage=i;
+      movieFocus=0;
+      renderMovies(filteredData);
+    };
+    moviesPagEl.appendChild(btn);
+  }
 }
-detectDevice();
+
+function applyFilters(){
+  const q = searchEl.value.toLowerCase();
+  const genre = genreEl.value;
+  const year = yearEl.value;
+
+  filteredData = mediaData.filter(m=>
+    (genre==='all'||m.genre===genre) &&
+    (!year||String(m.year)===year) &&
+    m.title.toLowerCase().includes(q)
+  );
+
+  moviePage=1;
+  movieFocus=0;
+  renderMovies(filteredData);
+}
+
+searchEl.oninput=genreEl.onchange=yearEl.onchange=applyFilters;
+
+renderMovies(mediaData);
 </script>
 
 </body>
