@@ -150,7 +150,8 @@ h2{
 
     <select id="genre-filter">
       <option value="all">Género</option>  
-      <option value="Acción">Acción</option>	  
+      <option value="Acción">Acción</option>	
+      <option value="Comedia absurda">Comedia absurda</option>      
       <option value="Comedia española">Comedia española</option>
       <option value="Comedia">Comedia</option>
       <option value="Drama">Drama</option>
@@ -181,11 +182,11 @@ h2{
 
 <script>
 const mediaData = [
-  { id:'alig', title:'Ali G : anda suelto', year:2002, genre:'Comedia', poster:'https://img.webme.com/pic/o/oscaradaynet/ali%20g%20anda%20suelto%20dvd.jpg', link:'https://filedn.com/ldXVm4wO7JdkpAf1xjDEu6B/ESPA%C3%91OL/A/Ali%20G%20Anda%20Suelto%20(HDR).mp4'},    
-  { id:'alig2', title:'Ali G : kien es yo?', year:2026, genre:'Comedia', poster:'https://filedn.com/lTs3E9lEzCxftG4kMyikVWJ/000PORTADAS/Ali%20G%20Ki%C3%A9n%20es%20yo%202026.jpg', link:'https://filedn.com/ldXVm4wO7JdkpAf1xjDEu6B/ESPA%C3%91OL/A/Ali%20G%20Ki%C3%A9n%20es%20yo%20(HDR).mp4'},    
-  { id:'borat', title:'Borat', year:2006, genre:'Comedia', poster:'https://img.webme.com/pic/o/oscaraday/borat%20dvd%202006.jpg', link:'https://filedn.com/lTs3E9lEzCxftG4kMyikVWJ/B/Borat%20(DVD)%202006.mp4'},    
-  { id:'borat2', title:'Borat 2', year:2020, genre:'Comedia', poster:'https://img.webme.com/pic/o/oscaraday/borat%202%20dvd.jpg', link:'https://filedn.com/lTs3E9lEzCxftG4kMyikVWJ/B/Borat%202%20Subsequent%20Moviefilm%20(HDR)%202020.mp4'},  
-  { id:'dictador', title:'El dictador', year:2012, genre:'Comedia', poster:'https://img.webme.com/pic/o/oscaradaynet/el%20dictador%20dvd.jpg', link:'https://filedn.com/lTs3E9lEzCxftG4kMyikVWJ/E/El%20dictador%20(HDR).mp4'},  
+  { id:'alig', title:'Ali G : anda suelto', year:2002, genre:'Comedia absurda', poster:'https://img.webme.com/pic/o/oscaradaynet/ali%20g%20anda%20suelto%20dvd.jpg', link:'https://filedn.com/ldXVm4wO7JdkpAf1xjDEu6B/ESPA%C3%91OL/A/Ali%20G%20Anda%20Suelto%20(HDR).mp4'},    
+  { id:'alig2', title:'Ali G : kien es yo?', year:2026, genre:'Comedia absurda', poster:'https://filedn.com/lTs3E9lEzCxftG4kMyikVWJ/000PORTADAS/Ali%20G%20Ki%C3%A9n%20es%20yo%202026.jpg', link:'https://filedn.com/ldXVm4wO7JdkpAf1xjDEu6B/ESPA%C3%91OL/A/Ali%20G%20Ki%C3%A9n%20es%20yo%20(HDR).mp4'},    
+  { id:'borat', title:'Borat', year:2006, genre:'Comedia absurda', poster:'https://img.webme.com/pic/o/oscaraday/borat%20dvd%202006.jpg', link:'https://filedn.com/lTs3E9lEzCxftG4kMyikVWJ/B/Borat%20(DVD)%202006.mp4'},    
+  { id:'borat2', title:'Borat 2', year:2020, genre:'Comedia absurda', poster:'https://img.webme.com/pic/o/oscaraday/borat%202%20dvd.jpg', link:'https://filedn.com/lTs3E9lEzCxftG4kMyikVWJ/B/Borat%202%20Subsequent%20Moviefilm%20(HDR)%202020.mp4'},  
+  { id:'dictador', title:'El dictador', year:2012, genre:'Comedia absurda', poster:'https://img.webme.com/pic/o/oscaradaynet/el%20dictador%20dvd.jpg', link:'https://filedn.com/lTs3E9lEzCxftG4kMyikVWJ/E/El%20dictador%20(HDR).mp4'},  
   { id:'agente', title:'Agente contrainteligente', year:2016, genre:'Comedia', poster:'https://img.webme.com/pic/o/oscaraday/agente%20contrainteligente%20dvd...jpg', link:'https://filedn.com/lTs3E9lEzCxftG4kMyikVWJ/A/Agente%20Contrainteligente%20(HDR).mp4'},  
 
   { id:'Lmortalk22', title:'Mortal kombat 2', year:2026, genre:'Acción', poster:'https://filedn.com/lTs3E9lEzCxftG4kMyikVWJ/000PORTADAS/MORTAL%20KOMBAT%202%20CAST.jpg', link:'https://filedn.com/ldXVm4wO7JdkpAf1xjDEu6B/ESPA%C3%91OL/M/Mortal%20Kombat%20II%20(HDR)%202026.mp4'},    
